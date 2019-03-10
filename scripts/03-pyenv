@@ -1,7 +1,7 @@
 function setup_pyenv() {
   local binaries=$(slist python)
 
-  for tool in python@2 python3 pyenv pyenv-virtualenvwrapper; do
+  for tool in python3 pyenv; do
     binaries="$(blist $tool) $binaries"
   done
   
