@@ -1,15 +1,16 @@
 function setup_pyenv() {
-  local binaries=$(slist python)
+  read -r -A binaries <<< `slist python`
 
-  for tool in python3 pyenv; do
-    binaries="$(blist $tool) $binaries"
+  for brew_tool in python3 pyenv; do
+    read -r -A tool_binaries <<< `blist $brew_tool`
+    binaries+=($tool_binaries)
   done
   
   for binary in $binaries; do
     source /dev/stdin <<EOF
 function ${binary}() {
   for t in ${binaries}; do
-    unset -f "\$t";
+    unset -f "\$t" 2>/dev/null;
   done
 
   # https://hackercodex.com/guide/python-development-environment-on-mac-osx/
