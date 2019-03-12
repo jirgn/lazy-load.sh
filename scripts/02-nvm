@@ -8,10 +8,13 @@ function ${binary}() {
     unset -f "\$t";
   done
 
-  export NVM_DIR="$HOME/.nvm"
-  [[ -s "${BREW}/opt/nvm/nvm.sh" ]] && . "${BREW}/opt/nvm/nvm.sh"
+  if [[ !(-v "\$nmv_loaded") || "\$rvm_loaded" -eq false ]]; then
+    echo "... loading nvm";
+    export NVM_DIR="$HOME/.nvm"
+    [[ -s "${BREW_PREFIX}/opt/nvm/nvm.sh" ]] && . "${BREW_PREFIX}/opt/nvm/nvm.sh"
 
-  $binary "\$@";
+    $binary "\$@";
+  fi
 }
 EOF
   done
