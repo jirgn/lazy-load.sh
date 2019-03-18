@@ -9,7 +9,7 @@ function ${binary}() {
     unset -f "\$t";
   done
 
-  if [[ !(-v "\$rmv_loaded") || "\$rvm_loaded" -eq false ]]; then
+  if [[ !(-v "\$rvm_loaded") || "\$rvm_loaded" -eq false ]]; then
     echo "... loading rvm";
     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm";
     rvm_loaded=true;

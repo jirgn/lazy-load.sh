@@ -1,5 +1,5 @@
 function setup_nvm() {
-  local binaries=(nvm node npm yarn)
+  local binaries=(nvm node npm yarn, tern)
 
   for binary in $binaries; do
     source /dev/stdin <<EOF
@@ -8,13 +8,14 @@ function ${binary}() {
     unset -f "\$t";
   done
 
-  if [[ !(-v "\$nmv_loaded") || "\$rvm_loaded" -eq false ]]; then
+  if [[ !(-v "\$nvm_loaded") || "\$nvm_loaded" -eq false ]]; then
     echo "... loading nvm";
     export NVM_DIR="$HOME/.nvm"
     [[ -s "${BREW_PREFIX}/opt/nvm/nvm.sh" ]] && . "${BREW_PREFIX}/opt/nvm/nvm.sh"
-
-    $binary "\$@";
+    nvm_loaded=true
   fi
+
+  $binary "\$@";
 }
 EOF
   done
