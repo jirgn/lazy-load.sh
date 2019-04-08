@@ -14,10 +14,10 @@ function ${binary}() {
   done
 
   # https://hackercodex.com/guide/python-development-environment-on-mac-osx/
-  export PIP_REQUIRE_VIRTUALENV=true
-  function gpip() {
-    PIP_REQUIRE_VIRTUALENV="" pip "\$@";
-  }
+  # export PIP_REQUIRE_VIRTUALENV=true
+  # function gpip() {
+  #   PIP_REQUIRE_VIRTUALENV="" pip "\$@";
+  # }
 
   # pyenv
   if which pyenv > /dev/null; then
@@ -25,7 +25,7 @@ function ${binary}() {
   fi
 
   # https://github.com/yyuu/pyenv-virtualenvwrapper#using-pyvenv-instead-of-virtualenv
-  export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+  # export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
   $binary "\$@";
 }

@@ -1,5 +1,5 @@
 function setup_nvm() {
-  local binaries=(nvm node npm yarn, tern)
+  local binaries=(nvm node npm yarn tern eslint)
 
   for binary in $binaries; do
     source /dev/stdin <<EOF
