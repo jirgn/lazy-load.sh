@@ -1,7 +1,8 @@
 function setup_pyenv() {
   read -r -A binaries <<< `slist python`
+  local brew_tools=(python pyenv)
 
-  for brew_tool in python3 pyenv; do
+  for brew_tool in $brew_tools; do
     read -r -A tool_binaries <<< `blist $brew_tool`
     binaries+=($tool_binaries)
   done
